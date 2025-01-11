@@ -1,0 +1,85 @@
+{
+  "name": "nextMyremote",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/nextMyremote/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/nextMyremote",
+        "index": "apps/nextMyremote/src/index.html",
+        "baseHref": "/",
+        "main": "apps/nextMyremote/src/main.ts",
+        "tsConfig": "apps/nextMyremote/tsconfig.app.json",
+        "assets": [
+          "apps/nextMyremote/src/favicon.ico",
+          "apps/nextMyremote/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "apps/nextMyremote/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/nextMyremote/src/environments/environment.ts",
+              "with": "apps/nextMyremote/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/nextMyremote/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "nextMyremote:build",
+        "hmr": true,
+        "port": 4204
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "nextMyremote:build:development"
+        },
+        "production": {
+          "buildTarget": "nextMyremote:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/react:module-federation-static-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "serveTarget": "nextMyremote:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "nextMyremote:serve:development"
+        },
+        "production": {
+          "serveTarget": "nextMyremote:serve:production"
+        }
+      }
+    }
+  }
+}

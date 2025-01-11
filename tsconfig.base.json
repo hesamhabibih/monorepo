@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "myremote/Module": ["apps/react/myremote/src/remote-entry.ts"],
+      "nextMyremote/Module": ["apps/nextMyremote/src/remote-entry.ts"],
       "remote1/Module": ["apps/react/remote1/src/remote-entry.ts"],
       "remote2/Module": ["apps/react/remote2/src/remote-entry.ts"]
     }

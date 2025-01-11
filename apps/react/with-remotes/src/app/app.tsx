@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NxWelcome from './nx-welcome';
 import { Link, Route, Routes } from 'react-router-dom';
+const NextMyremote = React.lazy(() => import('nextMyremote/Module'));
 
 const Myremote = React.lazy(() => import('myremote/Module'));
 
@@ -15,6 +16,9 @@ export function App() {
           <Link to="/">Home</Link>
         </li>
         <li>
+          <Link to="/next-myremote">NextMyremote</Link>
+        </li>
+        <li>
           <Link to="/myremote">Myremote</Link>
         </li>
         <li>
@@ -26,6 +30,7 @@ export function App() {
       </ul>
       <Routes>
         <Route path="/" element={<NxWelcome title="shell" />} />
+        <Route path="/next-myremote" element={<NextMyremote />} />
         <Route path="/myremote" element={<Myremote />} />
         <Route path="/remote1" element={<Remote1 />} />
         <Route path="/remote2" element={<Remote2 />} />
