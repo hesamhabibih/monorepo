@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@monorepo/state": ["state/src/index.ts"],
       "myremote/Module": ["apps/react/myremote/src/remote-entry.ts"],
       "nextMyremote/Module": ["apps/nextMyremote/src/remote-entry.ts"],
       "remote1/Module": ["apps/react/remote1/src/remote-entry.ts"],
